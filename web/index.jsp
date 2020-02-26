@@ -16,39 +16,31 @@
     <script src="https://kit.fontawesome.com/1a5eecb642.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <header class="navbar navbar-dark bg-dark">
-      <div class="navbar-nav-scroll">
-        <ul class="navbar-nav bd-navbar-nav flex-row text-light">
-          <li class="nav-item">
-            <a class="nav-link" href="#">Index</a>
-          </li>
-        </ul>
-      </div>
-    </header>
+    <%@ include file="/composants/navigation.jsp" %>
 
-    <form method="post" action="index.jsp">
-      <div class="container mt-5">
+    <form method="post" action="suppression">
+      <div class="container">
         <div class="row">
           <div class="col-4">
             <h4>Liste des articles</h4>
           </div>
           <div class="text-right offset-4 col-4">
             <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
-            <button class="btn btn-success"><i class="fas fa-plus"></i></button>
+            <button type="button" class="btn btn-success"><i class="fas fa-plus"></i></button>
           </div>
         </div>
         <br/>
         <table class="table table-hover">
           <thead class="thead-dark">
-          <tr>
-            <th></th>
-            <th scope="col">Libellé</th>
-            <th scope="col">Code-barre</th>
-            <th scope="col">Référence</th>
-            <th scope="col">Prix HT</th>
-            <th scope="col">Taux TVA</th>
-            <th></th>
-          </tr>
+            <tr>
+              <th></th>
+              <th scope="col">Libellé</th>
+              <th scope="col">Code-barre</th>
+              <th scope="col">Référence</th>
+              <th scope="col">Prix HT</th>
+              <th scope="col">Taux TVA</th>
+              <th></th>
+            </tr>
           </thead>
           <tbody>
           <%
