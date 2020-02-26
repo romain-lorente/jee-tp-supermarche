@@ -6,12 +6,21 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<header class="navbar navbar-dark bg-dark mb-5">
-  <div class="navbar-nav-scroll">
-    <ul class="navbar-nav bd-navbar-nav flex-row text-light">
-      <li class="nav-item">
-        <a class="nav-link" href="index.jsp">Index</a>
-      </li>
-    </ul>
-  </div>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
+
+        <a class="navbar-brand" href="index.jsp">Boutique</a>
+
+        <ul class="navbar-nav">
+
+            <li class="nav-item">
+                <a class="nav-link" href="index.jsp">Liste des articles</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="panier.jsp">Panier</a>
+            </li>
+
+        </ul>
+    </nav>
 </header>
