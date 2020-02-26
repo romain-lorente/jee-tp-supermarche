@@ -52,9 +52,7 @@ public class Article {
         this.prixHT = prixHT;
     }
 
-    public int getTauxTVA() {
-        return tauxTVA;
-    }
+    public int getTauxTVA() { return TVA[this.tauxTVA]; }
 
     public void setTauxTVA(int tauxTVA) {
         this.tauxTVA = tauxTVA;
