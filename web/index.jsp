@@ -1,4 +1,6 @@
-<%--
+<%@ page import="java.lang.management.ManagementPermission" %>
+<%@ page import="models.Article" %>
+<%@ page import="java.util.Map" %><%--
   Created by IntelliJ IDEA.
   User: Romain
   Date: 26/02/2020
@@ -40,16 +42,24 @@
         </tr>
         </thead>
         <tbody>
+        <%
+          Map<Long, Article> articles = (Map<Long, Article>) application.getAttribute("articles");
+          for(Long key : articles.keySet()) {
+            Article article = articles.get(key);%>
 
-        <tr>
-          <td><input type="checkbox" name="selected"/></td>
-          <td scope="row">Un article</td>
-          <td>123456789</td>
-          <td>REF123</td>
-          <td>10.00€</td>
-          <td>5%</td>
-          <td class="col-icon"><a href="https://google.com" class="fas fa-shopping-basket btn btn-icon"></a></td>
-        </tr>
+            <tr>
+              <td><input type="checkbox" name="selected" value="<%=article.getCodeBarre()%>"/></td>
+              <td scope="row"><%=article.getLibelle()%></td>
+              <td><%=article.getCodeBarre()%></td>
+              <td><%=article.getReference()%></td>
+              <td><%=article.getPrixHT() / 100F%> €</td>
+              <td><%=article.getTauxTVA() / 100F%> %</td>
+
+              <%-- TODO: mettre en place l'evenement pour l'ajout au panier --%>
+              <td class="col-icon"><a href="https://google.com" class="fas fa-shopping-basket btn btn-icon"></a></td>
+            </tr>
+
+          <%}%>
         </tbody>
       </table>
     </div>
