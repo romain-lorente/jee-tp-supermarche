@@ -1,0 +1,14 @@
+.table-hover td
+{
+    cursor: pointer;
+}
+
+.col-icon
+{
+    width: 33px;
+}
+
+.btn-icon
+{
+    padding: 2px 5px;
+}
