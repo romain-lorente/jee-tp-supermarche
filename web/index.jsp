@@ -26,7 +26,7 @@
           </div>
           <div class="text-right offset-4 col-4">
             <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
-            <button type="button" class="btn btn-success"><i class="fas fa-plus"></i></button>
+            <a href="ajoutArticle.jsp" role="button" class="btn btn-success"><i class="fas fa-plus"></i></a>
           </div>
         </div>
         <br/>
