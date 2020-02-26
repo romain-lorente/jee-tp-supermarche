@@ -41,6 +41,7 @@
               <th scope="col">Prix HT</th>
               <th scope="col">Taux TVA</th>
               <th></th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -59,6 +60,7 @@
 
                 <%-- TODO: mettre en place l'evenement pour l'ajout au panier --%>
                 <td class="col-icon"><a href="https://google.com" class="fas fa-shopping-basket btn btn-icon"></a></td>
+                <td class="col-icon"><a href="modificationArticle?article=<%= article.getCodeBarre() %>" class="fas fa-edit btn btn-icon"></a></td>
               </tr>
 
             <%}%>
