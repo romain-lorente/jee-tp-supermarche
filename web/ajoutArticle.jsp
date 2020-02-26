@@ -14,7 +14,7 @@
     <script src="https://kit.fontawesome.com/1a5eecb642.js" crossorigin="anonymous"></script>
   </head>
   <body>
-  <%@ include file="/composants/navigation.jsp" %>
+  <%@ include file="/WEB-INF/composants/navigation.jsp" %>
 
     <div class="container">
       <h4>Nouvel article</h4>

@@ -17,7 +17,7 @@
     <script src="https://kit.fontawesome.com/1a5eecb642.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <%@ include file="/composants/navigation.jsp" %>
+    <%@ include file="/WEB-INF/composants/navigation.jsp" %>
 
     <form method="post" action="suppression">
       <div class="container">
@@ -57,8 +57,7 @@
                 <td><%=article.getPrixHT() / 100F%> €</td>
                 <td><%=article.getTauxTVA() / 100F%> %</td>
 
-                <%-- TODO: mettre en place l'evenement pour l'ajout au panier --%>
-                <td class="col-icon"><a href="https://google.com" class="fas fa-shopping-basket btn btn-icon"></a></td>
+                <td class="col-icon"><button type="button" class="fas fa-shopping-basket btn btn-icon ajout-panier" boutique-codebarre="<%=article.getCodeBarre()%>"></button></td>
               </tr>
 
             <%}%>
@@ -70,5 +69,6 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="scripts/custom.js"></script>
   </body>
 </html>

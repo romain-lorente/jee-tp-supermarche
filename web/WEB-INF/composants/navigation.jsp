@@ -9,16 +9,16 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
 
-        <a class="navbar-brand" href="index.jsp">Boutique</a>
+        <a class="navbar-brand" href="../../index.jsp">Boutique</a>
 
         <ul class="navbar-nav">
 
             <li class="nav-item">
-                <a class="nav-link" href="index.jsp">Liste des articles</a>
+                <a class="nav-link" href="../../index.jsp">Liste des articles</a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="panier.jsp">Panier</a>
+                <a class="nav-link" href="../../panier.jsp">Panier</a>
             </li>
 
         </ul>
