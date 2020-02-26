@@ -12,3 +12,27 @@
 {
     padding: 2px 5px;
 }
+
+input[type="checkbox"] {
+    -webkit-appearance: none;
+    border: 1px solid gray;
+    border-radius: 2px;
+    padding: 2px;
+    width: 17px;
+    height: 17px;
+}
+
+input[type="checkbox"]:focus {
+    box-shadow: none;
+}
+
+input[type="checkbox"]:checked {
+    background-color: #343a40;
+    color: white;
+}
+
+input[type="checkbox"]:checked::after {
+    position: relative;
+    top: -5px;
+    content: '✓';
+}

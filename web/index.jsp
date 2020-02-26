@@ -30,6 +30,7 @@
       <table class="table table-hover">
         <thead class="thead-dark">
         <tr>
+          <th></th>
           <th scope="col">Libellé</th>
           <th scope="col">Code-barre</th>
           <th scope="col">Référence</th>
@@ -39,7 +40,9 @@
         </tr>
         </thead>
         <tbody>
+
         <tr>
+          <td><input type="checkbox" name="selected"/></td>
           <td scope="row">Un article</td>
           <td>123456789</td>
           <td>REF123</td>
