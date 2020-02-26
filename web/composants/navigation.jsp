@@ -10,7 +10,7 @@
   <div class="navbar-nav-scroll">
     <ul class="navbar-nav bd-navbar-nav flex-row text-light">
       <li class="nav-item">
-        <a class="nav-link" href="/index.jsp">Index</a>
+        <a class="nav-link" href="index.jsp">Index</a>
       </li>
     </ul>
   </div>
