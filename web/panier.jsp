@@ -11,6 +11,20 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="/WEB-INF/composants/head.jsp" %>
 
+<div class="row">
+    <div class="offset-3 col-6">
+        <form method="post" class="ajout-panier-form">
+            <div class="form-group">
+                <div class="input-group">
+                    <input type="number" class="form-control" name="codeBarre" placeholder="Code-barre"/>
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-success"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 <form method="post" action="suppressionPanier">
     <div class="row">
         <div class="col-4">
@@ -30,7 +44,6 @@
             <th scope="col">Référence</th>
             <th scope="col">Prix TTC</th>
             <th scope="col">Taux TVA</th>
-            <th></th>
         </tr>
         </thead>
         <tbody>
