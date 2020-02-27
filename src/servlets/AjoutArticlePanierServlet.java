@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.nio.charset.CharsetEncoder;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -27,14 +26,16 @@ public class AjoutArticlePanierServlet extends HttpServlet {
 
             if(articlesBoutique.containsKey(codeBarre)) {
                 HttpSession session = req.getSession();
-                Map<Long, Article> articlesPanier = (Map<Long, Article>) session.getAttribute("articles");
+                ArrayList<Long> articlesPanier = (ArrayList<Long>) session.getAttribute("articles");
 
-                if (!articlesPanier.containsKey(codeBarre)) {
-                    articlesPanier.put(codeBarre, articlesBoutique.get(codeBarre));
-                } else {
-                    resp.setStatus(499);
-                    resp.getOutputStream().write("L'article saisi est déjà dans le panier.".getBytes("utf-8"));
+                articlesPanier.add(codeBarre);
+
+                int quantity = 0;
+                for(Long codeBarreArticle : articlesPanier) {
+                    if(codeBarreArticle == codeBarre) quantity += 1;
                 }
+
+                resp.getOutputStream().write(String.format("Vous possèdez actuelement %d entrées de cet article dans votre panier.", quantity).getBytes("utf-8"));
             } else {
                 resp.setStatus(404);
                 resp.getOutputStream().write("Aucun article n'est associé au code-barre saisi.".getBytes("utf-8"));

@@ -8,12 +8,7 @@ $(".ajout-panier").click(function (e) {
             codeBarre: boutiqueCodeBarre
         },
         success: function(data) {
-            alert("Ajouté au panier avec succès.");
-        },
-        statusCode: {
-            499: function(data) {
-                alert(data.responseText);
-            }
+            alert(data);
         }
     });
 });
@@ -27,13 +22,10 @@ $(".ajout-panier-form").submit(function (e) {
             codeBarre: e.currentTarget.elements.codeBarre.value
         },
         success: function(data) {
-            alert("Ajouté au panier avec succès.");
+            alert(data);
             location.reload();
         },
         statusCode: {
-            499: function(data) {
-                alert(data.responseText);
-            },
             404: function(data) {
                 alert(data.responseText);
             }

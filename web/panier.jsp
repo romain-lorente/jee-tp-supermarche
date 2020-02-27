@@ -1,6 +1,7 @@
 <%@ page import="java.lang.management.ManagementPermission" %>
 <%@ page import="models.Article" %>
 <%@ page import="java.util.Map" %>
+<%@ page import="java.util.ArrayList" %>
 <%--
   Created by IntelliJ IDEA.
   User: Romain
@@ -48,16 +49,22 @@
         </thead>
         <tbody>
         <%
-            //TODO: Remplacer par une liste de long
-            Map<Long, Article> articles = (Map<Long, Article>) session.getAttribute("articles");
+            Map<Long, Article> articles = (Map<Long, Article>) application.getAttribute("articles");
+            ArrayList<Long> articlesPanier = (ArrayList<Long>) session.getAttribute("articles");
+
+            ArrayList<Long> articlesRestant = new ArrayList<>();
+
             Float prixTotal = 0F;
             Float sommeTVA = 0F;
-            for(Long key : articles.keySet()) {
-                Article article = articles.get(key);
-                Float ajoutTVA = article.getPrixHT() * (article.getTauxTVA() / 10000F) / 100F;
-                Float prix = (article.getPrixHT() / 100F) + ajoutTVA;
-                prixTotal += prix;
-                sommeTVA += ajoutTVA;
+            for(Long key : articlesPanier) {
+                if(articles.containsKey(key)) {
+                    articlesRestant.add(key);
+
+                    Article article = articles.get(key);
+                    Float ajoutTVA = article.getPrixHT() * (article.getTauxTVA() / 10000F) / 100F;
+                    Float prix = (article.getPrixHT() / 100F) + ajoutTVA;
+                    prixTotal += prix;
+                    sommeTVA += ajoutTVA;
         %>
 
         <tr>
@@ -70,7 +77,10 @@
         </tr>
 
         <%
+                }
             }
+
+            session.setAttribute("articles", articlesRestant);
         %>
         <tr>
             <td></td>
