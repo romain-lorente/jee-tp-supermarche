@@ -28,7 +28,7 @@
                 <%
                     if(session.getAttribute("utilisateur") != null) {
                 %>
-                <a class="nav-link" href="deconnexion">Deconnexion ( <%=session.getAttribute("utilisateur") %>)</a>
+                <a class="nav-link" href="deconnexion">Deconnexion (<%=session.getAttribute("utilisateur") %>)</a>
                 <%
                 }
                 else {

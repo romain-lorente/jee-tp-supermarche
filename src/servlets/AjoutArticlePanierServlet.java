@@ -35,7 +35,7 @@ public class AjoutArticlePanierServlet extends HttpServlet {
                     if(codeBarreArticle == codeBarre) quantity += 1;
                 }
 
-                resp.getOutputStream().write(String.format("Vous possèdez actuelement %d entrées de cet article dans votre panier.", quantity).getBytes("utf-8"));
+                resp.getOutputStream().write(String.format("Ajout réussi. Vous possédez actuellement %d entrées de cet article dans votre panier.", quantity).getBytes("utf-8"));
             } else {
                 resp.setStatus(404);
                 resp.getOutputStream().write("Aucun article n'est associé au code-barre saisi.".getBytes("utf-8"));
