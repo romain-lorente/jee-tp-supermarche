@@ -1,4 +1,5 @@
 import models.Article;
+import models.Utilisateur;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
@@ -21,6 +22,11 @@ public class BoutiqueContextListener implements ServletContextListener {
         articles.put(789L, new Article(789L, "RF_789", "Seche-linge", 48000, 0));
         articles.put(756L, new Article(756L, "RF_756", "Réfrigérateur", 78000, 0));
 
+        Map<String, Utilisateur> utilisateurs = new HashMap<String, Utilisateur>();
+        utilisateurs.put("rlorente", new Utilisateur("rlorente", "admin"));
+        utilisateurs.put("qlegrand", new Utilisateur("qlegrand", "epsi"));
+
         context.setAttribute("articles", articles);
+        context.setAttribute("utilisateurs", utilisateurs);
     }
 }
