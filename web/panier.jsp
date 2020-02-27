@@ -51,10 +51,13 @@
             //TODO: Remplacer par une liste de long
             Map<Long, Article> articles = (Map<Long, Article>) session.getAttribute("articles");
             Float prixTotal = 0F;
+            Float sommeTVA = 0F;
             for(Long key : articles.keySet()) {
                 Article article = articles.get(key);
-                Float prix = (article.getPrixHT() * (1 + article.getTauxTVA() / 10000F)) / 100F;
+                Float ajoutTVA = article.getPrixHT() * (article.getTauxTVA() / 10000F) / 100F;
+                Float prix = (article.getPrixHT() / 100F) + ajoutTVA;
                 prixTotal += prix;
+                sommeTVA += ajoutTVA;
         %>
 
         <tr>
@@ -75,7 +78,7 @@
             <td></td>
             <td>Total :</td>
             <td><%=String.format("%.2f", prixTotal)%> €</td>
-            <td></td>
+            <td><%=String.format("%.2f", sommeTVA)%> €</td>
         </tr>
         </tbody>
     </table>
