@@ -41,7 +41,6 @@ public class AjoutArticlePanierServlet extends HttpServlet {
             }
 
         } catch (Exception e) {
-            e.printStackTrace(resp.getWriter());
             resp.setStatus(400);
             resp.getOutputStream().write("Le code-barre saisi n'est pas de type 'Long'.".getBytes("utf-8"));
         }
