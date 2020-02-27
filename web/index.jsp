@@ -18,7 +18,7 @@
         </div>
         <div class="text-right offset-4 col-4">
             <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
-            <a href="ajoutArticle.jsp" role="button" class="btn btn-success"><i class="fas fa-plus"></i></a>
+            <a href="ajoutArticle" role="button" class="btn btn-success"><i class="fas fa-plus"></i></a>
         </div>
     </div>
     <br/>
@@ -49,7 +49,7 @@
             <td><%=article.getPrixHT() / 100F%> €</td>
             <td><%=article.getTauxTVA() / 100F%> %</td>
 
-            <td class="col-icon"><a class="fas fa-edit btn btn-icon" href="WEB-INF/modificationArticle.jsp?article=<%=article.getCodeBarre()%>"></a></td>
+            <td class="col-icon"><a class="fas fa-edit btn btn-icon" href="modificationArticle?article=<%=article.getCodeBarre()%>"></a></td>
             <td class="col-icon"><button type="button" class="fas fa-shopping-basket btn btn-icon ajout-panier" boutique-codebarre="<%=article.getCodeBarre()%>"></button></td>
         </tr>
         <%

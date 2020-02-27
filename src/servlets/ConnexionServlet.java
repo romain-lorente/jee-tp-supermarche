@@ -29,7 +29,7 @@ public class ConnexionServlet extends HttpServlet {
                     HttpSession session = request.getSession();
                     session.setAttribute("utilisateur", nom);
 
-                    response.sendRedirect(request.getContextPath()+"/index.jsp");
+                    response.sendRedirect(request.getContextPath() + "/index.jsp");
                 } else {
                     response.setStatus(401);
                     response.getOutputStream().write("Les informations de connexion sont incorrectes.".getBytes("utf-8"));

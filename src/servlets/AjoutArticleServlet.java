@@ -15,6 +15,11 @@ import java.util.Map;
 @WebServlet("/ajoutArticle")
 public class AjoutArticleServlet extends HttpServlet {
 
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/ajoutArticle.jsp");
+        dispatcher.forward(request, response);
+    }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             String libelle = request.getParameter("libelle");
@@ -26,7 +31,7 @@ public class AjoutArticleServlet extends HttpServlet {
             Map<Long, Article> articles = (Map<Long, Article>) this.getServletContext().getAttribute("articles");
             articles.put(codeBarre, new Article(codeBarre, reference, libelle, prix, tauxTVA));
 
-            response.sendRedirect("/index.jsp");
+            response.sendRedirect(request.getContextPath() + "/index.jsp");
         }
         catch (Exception e) {
             response.sendError(400, "Une erreur est survenue lors de l'ajout. Veuillez réessayer.");

@@ -32,8 +32,7 @@ public class ModificationArticleServlet extends HttpServlet {
                 a.setTauxTVA(tauxTVA);
                 a.setReference(reference);
 
-                RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/index.jsp");
-                dispatcher.forward(request, response);
+                response.sendRedirect(request.getContextPath() + "/index.jsp");
             } else {
                 response.sendError(404, "Cet article est introuvable.");
             }
