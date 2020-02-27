@@ -20,6 +20,21 @@
                 <a class="nav-link" href="panier.jsp">Panier</a>
             </li>
 
+            <li class="nav-item">
+                <%
+                    if(session.getAttribute("utilisateur") == null) {
+                %>
+                <a class="nav-link" href="#">Deconnexion</a>
+                <%
+                    }
+                    else {
+                %>
+                <a class="nav-link" href="#">Connexion</a>
+                <%
+                    }
+                %>
+            </li>
+
         </ul>
     </nav>
 </header>
