@@ -57,7 +57,7 @@
 %>
 <h4>Aucun élément n'a été sélectionné.</h4>
 <br/>
-<a href="index.jsp" role="button" class="btn btn-success">Retour à l'accueil</a>
+<a href="panier.jsp" role="button" class="btn btn-success">Retour au panier</a>
 <%
     }
 %>
