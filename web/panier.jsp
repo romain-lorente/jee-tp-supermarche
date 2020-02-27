@@ -14,7 +14,7 @@
 <form method="post" action="suppressionPanier">
     <div class="row">
         <div class="col-4">
-            <h4>Liste des articles</h4>
+            <h4>Votre panier</h4>
         </div>
         <div class="text-right offset-4 col-4">
             <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
@@ -28,7 +28,7 @@
             <th scope="col">Libellé</th>
             <th scope="col">Code-barre</th>
             <th scope="col">Référence</th>
-            <th scope="col">Prix HT</th>
+            <th scope="col">Prix TTC</th>
             <th scope="col">Taux TVA</th>
             <th></th>
         </tr>
@@ -37,8 +37,11 @@
         <%
             //TODO: Remplacer par une liste de long
             Map<Long, Article> articles = (Map<Long, Article>) session.getAttribute("articles");
+            Float prixTotal = 0F;
             for(Long key : articles.keySet()) {
                 Article article = articles.get(key);
+                Float prix = (article.getPrixHT() * (1 + article.getTauxTVA() / 10000F)) / 100F;
+                prixTotal += prix;
         %>
 
         <tr>
@@ -46,13 +49,21 @@
             <td scope="row"><%=article.getLibelle()%></td>
             <td><%=article.getCodeBarre()%></td>
             <td><%=article.getReference()%></td>
-            <td><%=article.getPrixHT() / 100F%> €</td>
+            <td><%=String.format("%.2f", prix)%> €</td>
             <td><%=article.getTauxTVA() / 100F%> %</td>
         </tr>
 
         <%
             }
         %>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>Total :</td>
+            <td><%=String.format("%.2f", prixTotal)%> €</td>
+            <td></td>
+        </tr>
         </tbody>
     </table>
 </form>
