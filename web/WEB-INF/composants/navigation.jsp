@@ -10,7 +10,7 @@
 
         <a class="navbar-brand" href="index.jsp">Boutique</a>
 
-        <ul class="navbar-nav">
+        <ul class="navbar-nav mr-auto">
 
             <li class="nav-item">
                 <a class="nav-link" href="index.jsp">Liste des articles</a>
@@ -20,14 +20,18 @@
                 <a class="nav-link" href="panier.jsp">Panier</a>
             </li>
 
+        </ul>
+
+        <ul class="navbar-nav">
+
             <li class="nav-item">
                 <%
                     if(session.getAttribute("utilisateur") != null) {
                 %>
-                <a class="nav-link" href="#">Deconnexion (<%=session.getAttribute("utilisateur")%>)</a>
+                <a class="nav-link" href="deconnexion">Deconnexion ( <%=session.getAttribute("utilisateur") %>)</a>
                 <%
-                    }
-                    else {
+                }
+                else {
                 %>
                 <a class="nav-link" href="connexion.jsp">Connexion</a>
                 <%
