@@ -8,7 +8,7 @@ $(".ajout-panier").click(function (e) {
             codeBarre: boutiqueCodeBarre
         },
         success: function(data) {
-            alert("Ajouté au panier avec succé.")
+            alert("Ajouté au panier avec succès.")
         },
         statusCode: {
             499: function(data) {
