@@ -3,6 +3,7 @@ package servlets;
 import models.Article;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,6 +14,7 @@ import java.util.Map;
 
 @WebServlet("/modificationArticle")
 public class ModificationArticleServlet extends HttpServlet {
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Map<Long, Article> articles = (Map<Long, Article>) this.getServletContext().getAttribute("articles");
 
@@ -23,20 +25,18 @@ public class ModificationArticleServlet extends HttpServlet {
             Integer tauxTVA = Integer.parseInt(request.getParameter("tva"));
             Integer prix = (int)(Double.parseDouble(request.getParameter("prix")) * 100);
 
-            Article a = articles.get(codeBarre);
+            if(articles.containsKey(codeBarre)) {
+                Article a = articles.get(codeBarre);
+                a.setLibelle(libelle);
+                a.setPrixHT(prix);
+                a.setTauxTVA(tauxTVA);
+                a.setReference(reference);
 
-            a.setLibelle(libelle);
-            a.setPrixHT(prix);
-            a.setTauxTVA(tauxTVA);
-            a.setReference(reference);
-
-            articles.remove(codeBarre);
-            articles.put(codeBarre, a);
-
-            this.getServletContext().setAttribute("articles", articles);
-
-            RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/index.jsp");
-            dispatcher.forward(request, response);
+                RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/index.jsp");
+                dispatcher.forward(request, response);
+            } else {
+                response.sendError(404, "Cet article est introuvable.");
+            }
         }
         catch (Exception e) {
             response.sendError(400, "Une erreur est survenue lors de la modification. Veuillez réessayer.");
@@ -45,13 +45,32 @@ public class ModificationArticleServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            Long.valueOf(request.getParameter("article"));
+            String param = request.getParameter("article");
 
-            RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/modificationArticle.jsp");
-            dispatcher.forward(request, response);
+            if(param != null) {
+                Long codeBarre = Long.valueOf(param);
+
+                ServletContext context = this.getServletContext();
+                Map<Long, Article> articles = (Map<Long, Article>) context.getAttribute("articles");
+
+                if(articles.containsKey(codeBarre)) {
+                    Article article = articles.get(codeBarre);
+
+                    request.setAttribute("article", article);
+
+                    RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/modificationArticle.jsp");
+                    dispatcher.forward(request, response);
+                }
+                else {
+                    response.sendError(404, "Cet article est introuvable.");
+                }
+            }
+            else {
+                response.sendError(400, "Il manque un parametre dans la requete.");
+            }
         }
         catch (Exception e) {
-            response.sendError(404, "Cet article est introuvable.");
+            response.sendError(400, "Le parametre codeBarre n'est pas du bon type.");
         }
     }
 }
