@@ -22,14 +22,14 @@
 
             <li class="nav-item">
                 <%
-                    if(session.getAttribute("utilisateur") == null) {
+                    if(session.getAttribute("utilisateur") != null) {
                 %>
-                <a class="nav-link" href="#">Deconnexion</a>
+                <a class="nav-link" href="#">Deconnexion (<%=session.getAttribute("utilisateur")%>)</a>
                 <%
                     }
                     else {
                 %>
-                <a class="nav-link" href="#">Connexion</a>
+                <a class="nav-link" href="connexion.jsp">Connexion</a>
                 <%
                     }
                 %>
