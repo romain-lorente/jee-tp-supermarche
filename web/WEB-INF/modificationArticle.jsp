@@ -10,8 +10,7 @@
 <%@ include file="/WEB-INF/composants/head.jsp" %>
 
 <%
-    Map<Long, Article> articles = (Map<Long, Article>) application.getAttribute("articles");
-    Article a = articles.get(Long.valueOf(request.getParameter("article")));
+    Article a = (Article) request.getAttribute("article");
 %>
 <h4>Modifier l'article <%=a.getCodeBarre()%></h4>
 <br/>
