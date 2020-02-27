@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
     <head>
-        <title>Suppression d'articles</title>
+        <title>Boutique</title>
         <link rel="stylesheet" type="text/css" href="style/bootstrap.css"/>
         <link rel="stylesheet" type="text/css" href="style/custom.css"/>
         <script src="https://kit.fontawesome.com/1a5eecb642.js" crossorigin="anonymous"></script>
