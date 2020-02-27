@@ -1,9 +1,7 @@
 <%@ page import="models.Article" %>
-<%@ page import="java.util.Map" %>
-
-<%--
+<%@ page import="java.util.Map" %><%--
   Created by IntelliJ IDEA.
-  User: Quentin
+  User: Romain
   Date: 26/02/2020
   Time: 15:23
   To change this template use File | Settings | File Templates.
@@ -18,7 +16,7 @@
 %>
 <h4>Les éléments suivants seront supprimés :</h4>
 <hr/>
-<form method="post" action="suppressionPanier">
+<form method="post" action="suppression">
     <table class="table table-hover">
         <thead class="thead-dark">
         <tr>
@@ -53,7 +51,7 @@
     <a class="btn btn-danger" href="index.jsp">Annuler</a>
 </form>
 <%
-    } else {
+} else {
 %>
 <h4>Aucun élément n'a été sélectionné.</h4>
 <br/>

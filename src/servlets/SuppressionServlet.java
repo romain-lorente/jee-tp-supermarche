@@ -31,7 +31,7 @@ public class SuppressionServlet extends AbstractSuppressionServlet {
                 }
             }
 
-            RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/suppressionOk.jsp");
+            RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/suppressionOk.jsp");
             dispatcher.forward(request, response);
         }
     }
@@ -43,7 +43,7 @@ public class SuppressionServlet extends AbstractSuppressionServlet {
         if(selected != null) {
             request.setAttribute("selected", selected);
 
-            RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/suppression.jsp");
+            RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/suppression.jsp");
             dispatcher.forward(request, response);
         }
     }
