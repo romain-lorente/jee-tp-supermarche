@@ -33,16 +33,16 @@ public class AjoutArticlePanierServlet extends HttpServlet {
                     articlesPanier.put(codeBarre, articlesBoutique.get(codeBarre));
                 } else {
                     resp.setStatus(499);
-                    resp.getOutputStream().write("L'article saisie est déjà dans le panier.".getBytes("utf-8"));
+                    resp.getOutputStream().write("L'article saisi est déjà dans le panier.".getBytes("utf-8"));
                 }
             } else {
                 resp.setStatus(404);
-                resp.getOutputStream().write("Aucune article n'est associé au code barre saisie.".getBytes("utf-8"));
+                resp.getOutputStream().write("Aucun article n'est associé au code-barre saisi.".getBytes("utf-8"));
             }
 
         } catch (Exception e) {
             resp.setStatus(400);
-            resp.getOutputStream().write("Le code barre saisi n'est pas de type 'Long'.".getBytes("utf-8"));
+            resp.getOutputStream().write("Le code-barre saisi n'est pas de type 'Long'.".getBytes("utf-8"));
         }
     }
 }

@@ -1,4 +1,5 @@
-<%--
+<%@ page import="models.Article" %>
+<%@ page import="java.util.Map" %><%--
   Created by IntelliJ IDEA.
   User: Romain
   Date: 26/02/2020
@@ -17,23 +18,56 @@
     <%@ include file="/WEB-INF/composants/navigation.jsp" %>
 
     <div class="container">
+      <%
+        Long[] selected = (Long[]) request.getAttribute("selected");
+
+        if (selected != null && selected.length > 0) {
+      %>
       <h4>Les éléments suivants seront supprimés :</h4>
       <hr/>
-      <form method="post" action="suppressionOk">
-        <ul>
-        <%
-          String[] valeurs = request.getParameterValues("selected");
-          for(String valeur : valeurs) { %>
-            <li><%= valeur %></li>
-            <input type="hidden" name="selected" value="<%= valeur %>">
-          <% }
-        %>
-        </ul>
-        <div>
-          <button type="submit" class="btn btn-success">Supprimer</button>
-          <button type="button" class="btn btn-danger">Annuler</button>
-        </div>
+      <form method="post" action="suppression">
+        <table class="table table-hover">
+          <thead class="thead-dark">
+          <tr>
+            <th scope="col">Libellé</th>
+            <th scope="col">Code-barre</th>
+            <th scope="col">Référence</th>
+            <th scope="col">Prix HT</th>
+            <th scope="col">Taux TVA</th>
+          </tr>
+          </thead>
+          <tbody>
+          <%
+            Map<Long, Article> articles = (Map<Long, Article>) application.getAttribute("articles");
+
+            for(Long key : selected) {
+          %>
+          <tr>
+            <td scope="row"><%=articles.get(key).getLibelle()%></td>
+            <td><%=articles.get(key).getCodeBarre()%></td>
+            <td><%=articles.get(key).getReference()%></td>
+            <td><%=articles.get(key).getPrixHT() / 100F%> €</td>
+            <td><%=articles.get(key).getTauxTVA() / 100F%> %</td>
+            <input type="hidden" name="selected" value="<%= key %>">
+          </tr>
+          <%
+            }
+          %>
+          </tbody>
+        </table>
+
+        <input type="submit" name="valider" class="btn btn-success" value="Supprimer">
+        <a class="btn btn-danger" href="index.jsp">Annuler</a>
       </form>
+      <%
+      } else {
+      %>
+      <h4>Aucun élément n'a été sélectionné.</h4>
+      <br/>
+      <a href="index.jsp" role="button" class="btn btn-success">Retour à l'accueil</a>
+      <%
+        }
+      %>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

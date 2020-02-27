@@ -22,7 +22,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-4">
-                        <h4>Liste des articles</h4>
+                        <h4>Votre panier</h4>
                     </div>
                     <div class="text-right offset-4 col-4">
                         <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
