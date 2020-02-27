@@ -33,6 +33,9 @@ $(".ajout-panier-form").submit(function (e) {
         statusCode: {
             499: function(data) {
                 alert(data.responseText);
+            },
+            404: function(data) {
+                alert(data.responseText);
             }
         }
     });
